@@ -16,6 +16,17 @@ This notebook will pretrain an AWD LSTM model using a custom text dataset design
 
 The SentencePiece Tokenizer with Byte-Pair Encoder (bpe) was used for tokenization instead of the standard fastai Spacy tokenizer. It was trained for 7 epochs and it took 2h14m per epoch.
 
-## NB 3. Language Model Finetuning
+## NB 3. Language Model Finetuning on competition Q&A
 
 Finetune the pretrained AWD LSTM Language Model on the competition Q&A data. Because we are finetuning the LM, we can use all of the competition data, both the train and test set.
+
+## NB 4. AWD LSTM Q&A classification and prediction
+Using the encoder from our finetuned language model in a text classification model to be trained on the competition data.
+
+**Note:** As of writing the fastai `SortedDL` dataloader sorts predictions according to item size, however for kaggle we need the predictions output in the same order as the submissions file, which is generally the same order as the input test file.
+
+So there was 1 more step to do after making out preds before I could use them. I had to get the original indexes from the dataloader and then re-sort the preds:
+```
+pred_idxs = tst_cls_dls.get_idxs()
+sorted_preds = [x for _,x in sorted(zip(pred_idxs, list(torch.unbind(preds[0]))))]
+```
