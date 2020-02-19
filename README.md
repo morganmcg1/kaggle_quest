@@ -4,6 +4,8 @@
 
 - These are all heavily influenced by the [fastai-v2 ULMFiT and Wikitext tutorials here](http://dev.fast.ai/tutorial.ulmfit)
 
+- I entered the competition quite late and spent too much time on learning the new fastai v2 framework, so didn't actaully get any decent results, but hopefully some of the code here will be useful for you in your LSTM endevours!
+
 ## NB1. Q&A Data for Pretraining
 Processes and combines 3 different text datasets into a single source ready for language model pre-training. This notebook outputs a 850mb text data file with 84M words/tokens with the following distribution:
 
