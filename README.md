@@ -15,3 +15,7 @@ Processes and combines 3 different text datasets into a single source ready for 
 This notebook will pretrain an AWD LSTM model using a custom text dataset designed especially for this Q&A competition.
 
 The SentencePiece Tokenizer with Byte-Pair Encoder (bpe) was used for tokenization instead of the standard fastai Spacy tokenizer. It was trained for 7 epochs and it took 2h14m per epoch.
+
+## NB 3. Language Model Finetuning
+
+Finetune the pretrained AWD LSTM Language Model on the competition Q&A data. Because we are finetuning the LM, we can use all of the competition data, both the train and test set.
